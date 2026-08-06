@@ -1,0 +1,40 @@
+<launch>
+
+    <!-- DETECTNET -->
+    <!-- rename model_name to match your net -->
+    <arg name="model_name"      default="mb1-ssd"/>
+    <!-- point to your .onnx -->
+    <arg name="model_path"      default="/home/af/ros_ws/V2/deep_learning_transfer_exercise/models/mb1-ssd.onnx"/>
+    <!-- no prototxt needed for ONNX -->
+    <arg name="prototxt_path"   default=""/>
+    <!-- your custom 2‑class labels file -->
+    <arg name="class_labels_path" default="/home/af/ros_ws/V2/deep_learning_transfer_exercise/models/labels.txt"/>
+    <!-- match the ONNX export input name -->
+    <arg name="input_blob"      default="input_0"/>
+    <!-- match the ONNX export output names -->
+    <arg name="output_cvg"      default="scores"/>
+    <arg name="output_bbox"     default="boxes"/>
+    <arg name="overlay_flags"   default="box,labels,conf"/>
+    <arg name="mean_pixel_value" default="0.0"/>
+    <arg name="threshold"       default="0.5"/>
+
+    <node pkg="ros_deep_learning" exec="detectnet" output="screen">
+        <remap from="/detectnet/image_in" to="/camera/camera/color/image_raw"/>
+        <param name="model_name"        value="$(var model_name)"/>
+        <param name="model_path"        value="$(var model_path)"/>
+        <param name="prototxt_path"     value="$(var prototxt_path)"/>
+        <param name="class_labels_path" value="$(var class_labels_path)"/>
+        <param name="input_blob"        value="$(var input_blob)"/>
+        <param name="output_cvg"        value="$(var output_cvg)"/>
+        <param name="output_bbox"       value="$(var output_bbox)"/>
+        <param name="overlay_flags"     value="$(var overlay_flags)"/>
+        <param name="mean_pixel_value"  value="$(var mean_pixel_value)"/>
+        <param name="threshold"         value="$(var threshold)"/>
+    </node>
+
+    <!-- VIDEO OUTPUT -->
+    <include file="$(find-pkg-share ros_deep_learning)/launch/video_output.ros2.launch">
+        <arg name="topic" value="/detectnet/overlay"/>
+    </include>
+
+</launch>

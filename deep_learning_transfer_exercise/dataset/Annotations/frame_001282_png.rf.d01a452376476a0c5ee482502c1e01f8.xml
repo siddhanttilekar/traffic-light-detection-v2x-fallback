@@ -1,0 +1,29 @@
+<annotation>
+	<folder></folder>
+	<filename>frame_001282_png.rf.d01a452376476a0c5ee482502c1e01f8.jpg</filename>
+	<path>frame_001282_png.rf.d01a452376476a0c5ee482502c1e01f8.jpg</path>
+	<source>
+		<database>roboflow.com</database>
+	</source>
+	<size>
+		<width>1280</width>
+		<height>720</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>traffic_light_red</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>298</xmin>
+			<xmax>350</xmax>
+			<ymin>313</ymin>
+			<ymax>376</ymax>
+		</bndbox>
+	</object>
+	<metadata>
+	</metadata>
+</annotation>
