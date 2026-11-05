@@ -65,7 +65,7 @@ The complete processing pipeline is illustrated below.
 
 ```bash
 cd ~/ros_workspace/src
-git clone https://github.com/siddhanttilekar/traffic-light-detection.git
+git clone https://github.com/siddhanttilekar/traffic-light-detection-v2x-fallback.git
 ```
 
 ## Build Environment
